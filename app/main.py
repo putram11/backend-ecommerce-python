@@ -3,9 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from loguru import logger
 import sys
 
-from .core.config import settings
-from .core.events import startup_event, shutdown_event
-from .api.v1 import auth, products, categories, images, carts, orders, payments, webhooks
+from app.core.config import settings
+from app.core.events import startup_event, shutdown_event
+from app.api.v1 import auth, products, categories, images, carts, orders, payments, webhooks
 
 # Configure logging
 logger.remove()  # Remove default handler

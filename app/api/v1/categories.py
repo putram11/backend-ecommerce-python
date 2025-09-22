@@ -4,9 +4,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID
 from slugify import slugify
 
-from ..api.deps import get_db, get_current_admin_user
-from ..db import crud
-from ..schemas import Category, CategoryCreate
+from app.api.deps import get_db, get_current_admin_user
+from app.db import crud
+from app.schemas import Category, CategoryCreate
 
 router = APIRouter()
 

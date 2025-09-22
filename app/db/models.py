@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 from enum import Enum
 
-from .base import Base, UUIDMixin, TimestampMixin
+from app.db.base import Base, UUIDMixin, TimestampMixin
 
 
 class OrderStatus(str, Enum):

@@ -5,9 +5,9 @@ from uuid import UUID
 from slugify import slugify
 import secrets
 
-from ..api.deps import get_db, get_current_admin_user, get_current_user_optional
-from ..db import crud
-from ..schemas import (
+from app.api.deps import get_db, get_current_admin_user, get_current_user_optional
+from app.db import crud
+from app.schemas import (
     Product, ProductCreate, ProductUpdate, ProductListResponse,
     ProductList
 )

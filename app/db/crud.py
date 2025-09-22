@@ -3,8 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, and_, or_
 from sqlalchemy.orm import selectinload
 
-from .models import User, Product, Category, ProductImage, Cart, CartItem, Order, OrderItem, Payment
-from ..core.security import get_password_hash, verify_password
+from app.db.models import User, Product, Category, ProductImage, Cart, CartItem, Order, OrderItem, Payment
+from app.core.security import get_password_hash, verify_password
 
 
 class CRUDUser:

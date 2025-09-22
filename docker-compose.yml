@@ -1,11 +1,9 @@
-version: "3.8"
-
 services:
   backend:
     build: .
     restart: unless-stopped
     volumes:
-      - ./app:/app
+      - ./app:/app/app
     environment:
       - DATABASE_URL=postgresql+asyncpg://postgres:password@db:5432/diecastdb
       - MINIO_ENDPOINT=minio:9000
@@ -29,7 +27,7 @@ services:
     depends_on:
       - db
       - minio
-    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    command: ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 
   db:
     image: postgres:15-alpine
@@ -45,7 +43,7 @@ services:
       - "5432:5432"
 
   minio:
-    image: minio/minio:latest
+    image: quay.io/minio/minio:RELEASE.2024-01-01T16-36-33Z
     restart: unless-stopped
     command: server /data --console-address ":9001"
     environment:
@@ -54,10 +52,9 @@ services:
     volumes:
       - minio_data:/data
     ports:
-      - "9000:9000"  # API
-      - "9001:9001"  # Console UI
+      - "9090:9000"
+      - "9091:9001"
 
-  # Optional: pgAdmin for database management
   pgadmin:
     image: dpage/pgadmin4:latest
     restart: unless-stopped

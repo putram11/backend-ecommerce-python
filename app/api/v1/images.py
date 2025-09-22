@@ -3,10 +3,10 @@ from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File,
 from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID
 
-from ..api.deps import get_db, get_current_admin_user
-from ..db import crud
-from ..schemas import ProductImage, ImageUploadResponse
-from ..services.image import image_service
+from app.api.deps import get_db, get_current_admin_user
+from app.db import crud
+from app.schemas import ProductImage, ImageUploadResponse
+from app.services.image import image_service
 
 router = APIRouter()
 
@@ -205,7 +205,7 @@ async def get_image_url(
     
     # This is a simplified version - in production you might want to
     # store image records in a separate table for faster lookup
-    from ..services.storage import storage_service
+    from app.services.storage import storage_service
     
     # Find image in database (you might want to optimize this query)
     result = await db.execute(

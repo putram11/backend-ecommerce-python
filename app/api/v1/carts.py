@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID
 
-from ..api.deps import get_db, get_current_user
-from ..db import crud
-from ..schemas import Cart, CartItemCreate
+from app.api.deps import get_db, get_current_user
+from app.db import crud
+from app.schemas import Cart, CartItemCreate
 
 router = APIRouter()
 

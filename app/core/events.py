@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from loguru import logger
-from .config import settings
-from ..services.storage import storage_service
+from app.core.config import settings
+from app.services.storage import storage_service
 
 
 async def startup_event(app: FastAPI) -> None:

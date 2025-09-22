@@ -4,7 +4,7 @@ from typing import Tuple
 from PIL import Image, ImageOps
 from loguru import logger
 
-from .storage import storage_service
+from app.services.storage import storage_service
 
 
 class ImageService:
