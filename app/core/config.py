@@ -27,6 +27,10 @@ class Settings(BaseSettings):
     JWT_REFRESH_TOKEN_EXPIRES_DAYS: int = Field(default=30)
     JWT_ALGORITHM: str = Field(default="HS256")
     
+    # CORS Configuration
+    FRONTEND_URL: str = Field(default="http://localhost:3000")
+    ALLOW_ALL_ORIGINS: bool = Field(default=False)
+    
     # Midtrans Configuration
     MIDTRANS_SERVER_KEY: str = Field(...)
     MIDTRANS_CLIENT_KEY: str = Field(...)
@@ -39,9 +43,12 @@ class Settings(BaseSettings):
     ADMIN_EMAIL: str = Field(default="admin@localhost")
     
     # CORS Origins
-    ALLOWED_ORIGINS: List[str] = Field(default=["http://localhost:3000", "http://127.0.0.1:3000"])
     
     @property
+    def ALLOWED_ORIGINS(self) -> List[str]:
+        if self.ALLOW_ALL_ORIGINS:
+            return ["*"]
+        return ["http://localhost:3000", "http://127.0.0.1:3000", self.FRONTEND_URL]    @property
     def midtrans_base_url(self) -> str:
         if self.MIDTRANS_IS_PRODUCTION:
             return "https://app.midtrans.com"
