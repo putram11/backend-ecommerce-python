@@ -75,7 +75,7 @@ async def seed_database():
                         "name": "Hot Wheels Lamborghini Huracan",
                         "description": "Diecast Hot Wheels Lamborghini Huracan skala 1:64 dengan detail interior dan eksterior yang sempurna",
                         "price": 25000,
-                        "stock_quantity": 50,
+                        "stock": 50,
                         "category_id": created_categories.get("Hot Wheels"),
                         "sku": "HW-LAMBO-001",
                         "is_published": True
@@ -84,7 +84,7 @@ async def seed_database():
                         "name": "Tomica Toyota Supra",
                         "description": "Tomica Toyota Supra GR dengan opening doors dan detail engine bay",
                         "price": 45000,
-                        "stock_quantity": 30,
+                        "stock": 30,
                         "category_id": created_categories.get("Tomica"),
                         "sku": "TOM-SUPRA-001",
                         "is_published": True
@@ -93,7 +93,7 @@ async def seed_database():
                         "name": "Majorette Ferrari F40",
                         "description": "Majorette Ferrari F40 dengan die-cast metal body dan rubber tires",
                         "price": 35000,
-                        "stock_quantity": 25,
+                        "stock": 25,
                         "category_id": created_categories.get("Majorette"),
                         "sku": "MAJ-F40-001",
                         "is_published": True
@@ -102,7 +102,7 @@ async def seed_database():
                         "name": "Matchbox Land Rover Defender",
                         "description": "Matchbox Land Rover Defender dengan authentic livery dan realistic proportions",
                         "price": 20000,
-                        "stock_quantity": 40,
+                        "stock": 40,
                         "category_id": created_categories.get("Matchbox"),
                         "sku": "MB-DEFENDER-001",
                         "is_published": True
@@ -111,7 +111,7 @@ async def seed_database():
                         "name": "Greenlight Ford Mustang GT500",
                         "description": "Greenlight Ford Mustang Shelby GT500 dengan opening hood dan detailed engine",
                         "price": 65000,
-                        "stock_quantity": 15,
+                        "stock": 15,
                         "category_id": created_categories.get("Greenlight"),
                         "sku": "GL-MUSTANG-001",
                         "is_published": True
