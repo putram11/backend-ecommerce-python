@@ -77,6 +77,11 @@ migrate:
     @echo "🗄️  Running database migrations..."
     {{DOCKER_COMPOSE}} exec {{APP_CONTAINER}} bash -c "cd /app && alembic upgrade head"
 
+# Seed database with initial data
+seed:
+    @echo "🌱 Seeding database with initial data..."
+    {{DOCKER_COMPOSE}} exec {{APP_CONTAINER}} python -c "import asyncio; from app.scripts.seed import seed_database; asyncio.run(seed_database())"
+
 # Create new migration
 migration MESSAGE="auto migration":
     @echo "📝 Creating new migration: {{MESSAGE}}"
@@ -196,10 +201,7 @@ health:
     @echo "🏥 Health check:"
     @echo "Backend API:"
     @curl -s http://localhost:8000/health | grep -q "healthy" && echo "✅ Backend healthy" || echo "❌ Backend not accessible"
-    @echo "\nMinIO:"
-    @curl -s http://localhost:9091 > /dev/null && echo "✅ MinIO ready" || echo "❌ MinIO not accessible"
-    @echo "\nDatabase:"
-    @docker compose exec -T db psql -U postgres -d diecastdb -c "SELECT 1;" > /dev/null 2>&1 && echo "✅ Database ready" || echo "❌ Database not accessible"
+    @echo "\nNote: Make sure your external PostgreSQL database is running and accessible"
 
 # 🔄 Utility Commands
 
