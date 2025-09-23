@@ -1,4 +1,3 @@
-from typing import List
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -35,6 +34,11 @@ class Settings(BaseSettings):
     # Frontend Configuration
     FRONTEND_URL: str = Field(default="http://localhost:3000")
     ALLOW_ALL_ORIGINS: bool = Field(default=False)
+    
+    @property
+    def cors_origins(self) -> list[str]:
+        # Always allow all origins
+        return ["*"]
     
     # Admin Configuration
     ADMIN_EMAIL: str = Field(default="admin@localhost")
